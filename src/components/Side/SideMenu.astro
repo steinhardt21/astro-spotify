@@ -1,10 +1,13 @@
 ---
-
+import SideMenuItem from './SideMenuItem.astro';
 ---
 
 <div class="flex flex-col flex-1 gap-2">
   <div class="bg-zinc-900 rounded-lg">
-    <ul></ul>
+    <ul>
+      <SideMenuItem href="/" nameIcon="carbon:home">Home</SideMenuItem>
+      <SideMenuItem href="#" nameIcon="carbon:search">Search</SideMenuItem>
+    </ul>
   </div>
   <div class="bg-zinc-900 rounded-lg flex-1"></div>
 </div>

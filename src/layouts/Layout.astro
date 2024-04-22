@@ -1,0 +1,37 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+  title: string;
+  image?: string;
+}
+
+const {
+  title,
+  image = 'https://res.cloudinary.com/dp3ppkxo5/image/upload/v1693776174/spotify-astro/playlist_2_f9ymlx.jpg',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Spotify copy with transitions" />
+
+    <meta name="og:title" content={title} />
+    <meta name="og:type" content="song" />
+    <meta name="og:image" content={image} />
+    <meta name="og:description" content="sooooong" />
+
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Spotify with transition in Astro</title>
+    <ViewTransitions fallback="none" />
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>

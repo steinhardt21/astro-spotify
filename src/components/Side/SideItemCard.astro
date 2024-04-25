@@ -11,7 +11,8 @@ const { playlist } = Astro.props;
 
 <a
   href={`/playlist/${playlist.id}`}
-  class="flex relative p-2 overflow-hidden items-center gap-5 rounded-md shadow-lg hover:shadow-xl outline-none hover:bg-zinc-500/10 focus:bg-zinc-500/50"
+  data-color={playlist.color.dark}
+  class="playlist-item flex relative p-2 overflow-hidden items-center gap-5 rounded-md shadow-lg hover:shadow-xl outline-none hover:bg-zinc-500/10 focus:bg-zinc-500/50"
 >
   <div class="h-12 w-12 flex-none">
     <img

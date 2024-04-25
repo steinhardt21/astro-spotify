@@ -52,5 +52,58 @@ const {
         color: white;
       }
     </style>
+    <script is:inline defer>
+      function setColorContainer(dataColor) {
+        const playlistContainer = document.getElementById('playlist-container');
+        const currentColor = playlistContainer?.getAttribute('data-color');
+
+        if (dataColor && dataColor !== currentColor) {
+          playlistContainer?.style.setProperty('--context-color', dataColor);
+          playlistContainer?.setAttribute('data-color', dataColor);
+        }
+      }
+
+      function onMouseOverColorad(el) {
+        if (el) {
+          const dataColor = el.getAttribute('data-color');
+          if (!dataColor) return;
+
+          window.coloradTimeout = setTimeout(
+            () => setColorContainer(dataColor),
+            200
+          );
+        }
+      }
+
+      function onMouseOutColorad() {
+        if (window.coloradTimeout) {
+          clearTimeout(window.coloradTimeout);
+          window.coloradTimeout = null;
+        }
+      }
+
+      function onMouseFocusColorad(el) {
+        if (el) {
+          const dataColor = el.getAttribute('data-color');
+          if (!dataColor) return;
+          setColorContainer(dataColor);
+        }
+      }
+
+      window.coloradTimeout = null;
+
+      for (const playlist of document.querySelectorAll('.playlist-item')) {
+        playlist.addEventListener('mouseover', () => {
+          console.log('CIAOOOO', playlist);
+          onMouseOverColorad(playlist);
+        });
+
+        playlist.addEventListener('mouseout', onMouseOutColorad);
+
+        playlist.addEventListener('focus', () => onMouseFocusColorad(playlist));
+
+        playlist.addEventListener('blur', onMouseOutColorad);
+      }
+    </script>
   </body>
 </html>

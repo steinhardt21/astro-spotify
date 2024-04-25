@@ -8,6 +8,7 @@ import { playlists } from '../lib/data';
 
 <Layout title="Home">
   <div
+    id="playlist-container"
     class="relative transition-all duration-1000 bg-context"
     style="min-height:300px;--context-color:#134e4a;"
   >
@@ -19,6 +20,10 @@ import { playlists } from '../lib/data';
       >
         {playlists.map((playlist) => <PlaylistItemCard {playlist} />)}
       </div>
+    </div>
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"
+    >
     </div>
   </div>
 </Layout>
